@@ -12,10 +12,12 @@ namespace Mission6_sunny28.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private MovieContex _movieContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MovieContex movie)
         {
             _logger = logger;
+            _movieContext = movie;
         }
 
         public IActionResult Index()
@@ -28,10 +30,21 @@ namespace Mission6_sunny28.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult AddMovie()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult AddMovie(Movie movie)
+        {
+            _movieContext.Add(movie);
+            _movieContext.SaveChanges();
+            return View("New Movie Added", movie);
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
