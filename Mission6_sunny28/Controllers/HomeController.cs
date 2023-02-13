@@ -41,7 +41,7 @@ namespace Mission6_sunny28.Controllers
         {
             _movieContext.Add(movie);
             _movieContext.SaveChanges();
-            return View("New Movie Added", movie);
+            return View("Confirmation", movie);
         }
 
 

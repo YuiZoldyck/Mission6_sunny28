@@ -53,6 +53,48 @@ namespace Mission6_sunny28.Migrations
                     b.HasKey("MovieId");
 
                     b.ToTable("responses");
+
+                    b.HasData(
+                        new
+                        {
+                            MovieId = 1,
+                            Category = "Action/Adventure",
+                            Director = "Ryan Coogler",
+                            Edited = false,
+                            Rating = "PG-13",
+                            Title = "Black Panther",
+                            Year = 2018
+                        },
+                        new
+                        {
+                            MovieId = 2,
+                            Category = "Musical/Romance",
+                            Director = "Joel Schumacher",
+                            Edited = false,
+                            Rating = "PG-13",
+                            Title = "The Phantom of the Opera",
+                            Year = 2005
+                        },
+                        new
+                        {
+                            MovieId = 3,
+                            Category = "Mystery/Animation",
+                            Director = "Yasuichiro Yamamoto",
+                            Edited = false,
+                            Rating = "PG-13",
+                            Title = "Detective Conan: Full Score of Fear",
+                            Year = 2008
+                        },
+                        new
+                        {
+                            MovieId = 4,
+                            Category = "Romance/Fantasy",
+                            Director = "Makoto Shinkai",
+                            Edited = false,
+                            Rating = "PG",
+                            Title = "Your Name.",
+                            Year = 2016
+                        });
                 });
 #pragma warning restore 612, 618
         }

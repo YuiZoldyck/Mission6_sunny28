@@ -1,0 +1,12 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Application Submitted";
+}
+
+@model Mission6_sunny28.Models.Movie
+
+<h2>@Model.Title has been added to the database!</h2>
+
+<a asp-controller="Home" asp-action="AddMovie">Return to add more movies</a>

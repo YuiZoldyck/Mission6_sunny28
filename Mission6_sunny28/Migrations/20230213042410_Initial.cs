@@ -25,6 +25,26 @@ namespace Mission6_sunny28.Migrations
                 {
                     table.PrimaryKey("PK_responses", x => x.MovieId);
                 });
+
+            migrationBuilder.InsertData(
+                table: "responses",
+                columns: new[] { "MovieId", "Category", "Director", "Edited", "LentTo", "Notes", "Rating", "Title", "Year" },
+                values: new object[] { 1, "Action/Adventure", "Ryan Coogler", false, null, null, "PG-13", "Black Panther", 2018 });
+
+            migrationBuilder.InsertData(
+                table: "responses",
+                columns: new[] { "MovieId", "Category", "Director", "Edited", "LentTo", "Notes", "Rating", "Title", "Year" },
+                values: new object[] { 2, "Musical/Romance", "Joel Schumacher", false, null, null, "PG-13", "The Phantom of the Opera", 2005 });
+
+            migrationBuilder.InsertData(
+                table: "responses",
+                columns: new[] { "MovieId", "Category", "Director", "Edited", "LentTo", "Notes", "Rating", "Title", "Year" },
+                values: new object[] { 3, "Mystery/Animation", "Yasuichiro Yamamoto", false, null, null, "PG-13", "Detective Conan: Full Score of Fear", 2008 });
+
+            migrationBuilder.InsertData(
+                table: "responses",
+                columns: new[] { "MovieId", "Category", "Director", "Edited", "LentTo", "Notes", "Rating", "Title", "Year" },
+                values: new object[] { 4, "Romance/Fantasy", "Makoto Shinkai", false, null, null, "PG", "Your Name.", 2016 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
