@@ -5,10 +5,13 @@ namespace Mission6_sunny28.Models
 {
     public class Movie
     {
+
+        //set key for the movie 
         [Key]
         [Required]
         public int MovieId { get; set; }
 
+        //make sure the ones that are required are required
         [Required]
         public string Category { get; set; }
 
@@ -27,6 +30,7 @@ namespace Mission6_sunny28.Models
         public bool Edited { get; set; }
         public string LentTo { get; set; }
 
+        //limit notes length to 25 characters
         [StringLength(25)]
         public string Notes { get; set; }
 

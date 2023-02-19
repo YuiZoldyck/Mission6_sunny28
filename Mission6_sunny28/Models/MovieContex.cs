@@ -11,6 +11,8 @@ namespace Mission6_sunny28.Models
 
         public DbSet<Movie> responses { get; set; }
 
+
+        //automatically add movies to database on creation
         protected override void OnModelCreating(ModelBuilder mb)
         {
             mb.Entity<Movie>().HasData(
