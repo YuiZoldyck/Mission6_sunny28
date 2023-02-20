@@ -1,16 +1,16 @@
 ﻿@{
-    ViewData["Title"] = "Add Movie";
+    ViewData["Title"] = "Edit Movie";
 }
 
 @model Mission6_sunny28.Models.Movie
 
 <div class="text-center">
-    <h1 class="display-4">Add a New Movie</h1>
+    <h1 class="display-4">Edit Movie</h1>
 
     @*Form to enter in new movie to the database*@
     <form method="post">
         <div asp-validation-summary="All"></div>
-        @*<input type="hidden" asp-for="MovieId" />*@
+        <input type="hidden" asp-for="MovieId" />
         <label asp-for="CategoryId">Category: </label>
         <select asp-for="CategoryId">
             <option value="">Select A Category</option>
@@ -50,7 +50,7 @@
         <input asp-for="Notes" /><br />
 
 
-       
+
 
         <button type="submit">Submit</button>
     </form>

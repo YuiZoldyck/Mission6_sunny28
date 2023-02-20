@@ -8,7 +8,7 @@ using Mission6_sunny28.Models;
 namespace Mission6_sunny28.Migrations
 {
     [DbContext(typeof(MovieContex))]
-    [Migration("20230213042410_Initial")]
+    [Migration("20230219235514_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,9 +23,8 @@ namespace Mission6_sunny28.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -54,13 +53,15 @@ namespace Mission6_sunny28.Migrations
 
                     b.HasKey("MovieId");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("responses");
 
                     b.HasData(
                         new
                         {
                             MovieId = 1,
-                            Category = "Action/Adventure",
+                            CategoryId = 1,
                             Director = "Ryan Coogler",
                             Edited = false,
                             Rating = "PG-13",
@@ -70,7 +71,7 @@ namespace Mission6_sunny28.Migrations
                         new
                         {
                             MovieId = 2,
-                            Category = "Musical/Romance",
+                            CategoryId = 2,
                             Director = "Joel Schumacher",
                             Edited = false,
                             Rating = "PG-13",
@@ -80,7 +81,7 @@ namespace Mission6_sunny28.Migrations
                         new
                         {
                             MovieId = 3,
-                            Category = "Mystery/Animation",
+                            CategoryId = 3,
                             Director = "Yasuichiro Yamamoto",
                             Edited = false,
                             Rating = "PG-13",
@@ -90,13 +91,59 @@ namespace Mission6_sunny28.Migrations
                         new
                         {
                             MovieId = 4,
-                            Category = "Romance/Fantasy",
+                            CategoryId = 4,
                             Director = "Makoto Shinkai",
                             Edited = false,
                             Rating = "PG",
                             Title = "Your Name.",
                             Year = 2016
                         });
+                });
+
+            modelBuilder.Entity("Mission6_sunny28.Models.MovieCategory", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Action/Adventure"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Musical/Romance"
+                        },
+                        new
+                        {
+                            CategoryId = 3,
+                            CategoryName = "Mystery/Animation"
+                        },
+                        new
+                        {
+                            CategoryId = 4,
+                            CategoryName = "Romance/Fantasy"
+                        });
+                });
+
+            modelBuilder.Entity("Mission6_sunny28.Models.Movie", b =>
+                {
+                    b.HasOne("Mission6_sunny28.Models.MovieCategory", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

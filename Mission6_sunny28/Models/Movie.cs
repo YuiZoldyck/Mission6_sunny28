@@ -12,19 +12,17 @@ namespace Mission6_sunny28.Models
         public int MovieId { get; set; }
 
         //make sure the ones that are required are required
-        [Required]
-        public string Category { get; set; }
-
-        [Required]
+        [Required(ErrorMessage ="Please enter a movie title!")]
         public string Title { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Please enter a valid year!")]
+        [Range(1880, 2023)]
         public int Year { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Please enter the director's name!")]
         public string Director { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please select a rating!")]
         public string Rating{ get; set; }
 
         public bool Edited { get; set; }
@@ -34,6 +32,10 @@ namespace Mission6_sunny28.Models
         [StringLength(25)]
         public string Notes { get; set; }
 
+        //Build Foreign Key Relationship
+        [Required(ErrorMessage ="Please select a category!")]
+        public int CategoryId { get; set; }
+        public MovieCategory Category { get; set; }
     }
 }
 

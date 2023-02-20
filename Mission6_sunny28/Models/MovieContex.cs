@@ -10,16 +10,39 @@ namespace Mission6_sunny28.Models
         }
 
         public DbSet<Movie> responses { get; set; }
-
+        public DbSet<MovieCategory> categories { get; set; }
 
         //automatically add movies to database on creation
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<MovieCategory>().HasData(
+                new MovieCategory
+                {
+                    CategoryId = 1,
+                    CategoryName = "Action/Adventure"
+                },
+                new MovieCategory
+                {
+                    CategoryId = 2,
+                    CategoryName = "Musical/Romance"
+                },
+                new MovieCategory
+                {
+                    CategoryId = 3,
+                    CategoryName = "Mystery/Animation"
+                },
+                new MovieCategory
+                {
+                    CategoryId = 4,
+                    CategoryName = "Romance/Fantasy"
+                }
+                );
+
             mb.Entity<Movie>().HasData(
                 new Movie
                 {
                     MovieId = 1,
-                    Category = "Action/Adventure",
+                    CategoryId = 1,
                     Title = "Black Panther",
                     Year = 2018,
                     Director = "Ryan Coogler",
@@ -31,7 +54,7 @@ namespace Mission6_sunny28.Models
                 new Movie
                 {
                     MovieId = 2,
-                    Category = "Musical/Romance",
+                    CategoryId = 2,
                     Title = "The Phantom of the Opera",
                     Year = 2005,
                     Director = "Joel Schumacher",
@@ -43,7 +66,7 @@ namespace Mission6_sunny28.Models
                 new Movie
                 {
                     MovieId = 3,
-                    Category = "Mystery/Animation",
+                    CategoryId = 3,
                     Title = "Detective Conan: Full Score of Fear",
                     Year = 2008,
                     Director = "Yasuichiro Yamamoto",
@@ -55,7 +78,7 @@ namespace Mission6_sunny28.Models
                 new Movie
                 {
                     MovieId = 4,
-                    Category = "Romance/Fantasy",
+                    CategoryId = 4,
                     Title = "Your Name.",
                     Year = 2016,
                     Director = "Makoto Shinkai",
